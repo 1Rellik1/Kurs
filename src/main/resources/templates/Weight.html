@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <link rel="stylesheet" href="Style.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<style>
+    .kfv {
+        display:block;
+        overflow:hidden;
+        margin:0; padding:0;
+        width:680px;
+        height:370px;
+        font-size:14px !important;
+    }
+
+    #galka {z-index:5; position:relative; top:-230px; left:300px; width:200px; height:1px;}
+    *html #galka {top:-238px;}
+
+    #about_e {display:none; position:relative; top:-13px; font-size:15px; color:#9f1e00;}
+    *html #about_e  {top:-63px;}
+
+    #pusto {display:none; height:13px; font-size:5px;}
+
+    form {padding:0; margin:0;}
+
+    .tabs {
+        overflow:hidden;
+        position:relative;
+        left:0px;
+        height:370px;
+        padding:40px 0 0;
+        margin:0;
+        zoom:1;
+    }
+
+    .tabs dt {
+        color:#424141;
+        display:table-cell;
+        float:left;
+        width:138px;
+        line-height:22px;
+        height:22px;
+        white-space:nowrap;
+        border:1px solid #dadada !important;
+        padding:0 13px;
+        position:relative;
+        margin:0 0 2px;
+        cursor:pointer;
+        border-radius:2px;
+
+        -webkit-border-radius:2px;
+        -moz-border-radius:2px;
+    }
+
+    *html .tabs dt {width:183px;}
+
+    .tabs dt:hover {
+        background-color:#FFA310;
+    }
+
+    .tabs dt.selected {
+        border-color:#FFA310;
+        background:#FFA310;
+        color:#fff;
+        z-index:2;
+        cursor:auto;
+    }
+
+    .tabs dd {
+        background:#fff;
+        display:none;
+        top:0;
+        left:140px;
+        position:absolute;
+        z-index:3;
+    }
+
+    .tabs dd.selected {
+        display:block;
+    }
+
+    .tabs .tab-content {
+        border:1px solid #FED84F;
+        margin:0;
+        padding:7px;
+        height:340px;
+        width:370px;
+    }
+    .tabs select{
+        width:168px;
+    }
+
+    *html .tabs .tab-content {width:347px;}
+
+    .tabs dd p {font-size:13px !important; text-align:left; line-height:16px !important; margin:11px 0 0 !important; padding:0 !important;}
+    *html .tabs dd p {font-size:12px !important; line-height:15px !important;}
+    .tabs dd h6 {font-size:17px; line-height:17px; padding:0; margin:13px 0 5px;}
+
+    .converter {font-size:13px;}
+    .converter input {font-family:Arial Narrow; width:110px; padding:0; margin:2px 0;}
+    .eda {color:#9f1e00 !important; border:1px solid #9f1e00 !important;}
+    .enet {color:#000 !important; border:1px solid #9a9a9a !important;}
+    .converter select {padding:0; margin:0; font-size:13px; border:1px solid #9a9a9a;}
+
+    #rashod1eb,#rashod2eb,#rabotab1eb,#rabotab2eb {font-size:10px;}
+    #potokm1eb,#potokm2eb,#momentb1eb,#momentb2eb {font-size:11px;}
+
+    .si {font-size:12px;}
+    .hdrrr {height:20px; vertical-align:middle; font-weight:bold; font-style:italic; font-size:11px;}
+    .si td {padding:2px 5px; margin:0; line-height:15px; width:33%;}
+    .si .nech {background-color:#f2f2ee;}
+
+    a{
+        text-decoration: none;
+        color: black;
+    }
+</style>
+<h1>Конвертер</h1>
+<div class="kfv">
+    <dl class="tabs">
+        <a href="http://localhost:8081/time"> <dt class="" style="margin-right:387px;">Время</dt></a><dd class="">
+        <dt class="selected" style="margin-right:387px;">Вес, масса</dt><dd class="selected"><div class="tab-content">
+        <h2>Вес, масса</h2>
+            <form action="#"  th:object="${get_data}" method="post"><tbody><tr><td>
+            <select  id="value1" th:field="*{first_class}">
+                <option th:value="ng">нанограмм (нг)</option>
+                <option th:value="mg">миллиграмм (мг)</option>
+                <option th:value="g" selected="">грамм (г)</option>
+                <option th:value="kg">килограмм (кг)</option>
+                <option th:value="c">центнер (ц)</option>
+                <option th:value="t">тонна (т)</option>
+                <option th:value="kt">килотонна (кт)</option>
+                <option th:value="n">ньютон</option>
+                <option th:value="kn">килоньютон</option>
+                <option th:value="emu">ед. атомн. массы</option>
+                <option th:value="car">карат</option>
+                <option th:value="unc.">унция</option>
+                <option th:value="lb">англ. фунт</option>
+                <option th:value="rf">рус. фунт</option>
+                <option th:value="p">пуд</option>
+            </select></td><td>в</td><td>
+            <select id="ves2e" th:field="*{second_class}">
+                <option th:value="ng">нанограмм (нг)</option>
+                <option th:value="mg">миллиграмм (мг)</option>
+                <option th:value="g" selected="">грамм (г)</option>
+                <option th:value="kg">килограмм (кг)</option>
+                <option th:value="c">центнер (ц)</option>
+                <option th:value="t">тонна (т)</option>
+                <option th:value="kt">килотонна (кт)</option>
+                <option th:value="n">ньютон</option>
+                <option th:value="kn">килоньютон</option>
+                <option th:value="emu">ед. атомн. массы</option>
+                <option th:value="car">карат</option>
+                <option th:value="unc.">унция</option>
+                <option th:value="lb">англ. фунт</option>
+                <option th:value="rf">рус. фунт</option>
+                <option th:value="p">пуд</option>
+            </select></td></tr><tr><td nowrap="">
+            <input type="text" id="ves1" th:field="*{first_value}" >&nbsp;<b id="ves1eb">г</b>
+        </td><td>=</td><td nowrap="">
+            <input type="text" id="ves2" th:value=" ${get_data.second_value}">&nbsp;<b id="ves2eb">кг</b>
+        </td></tr></tbody></table>
+        <div id="pusto">&nbsp;</div><input type="submit" value="Перевести">
+        </form>
+        <p><b>Вес</b> — сила, с которой взаимодействуют тело и&nbsp;опора этого тела (или&nbsp;подвес, к&nbsp;которому прикреплено тело).</p>
+        <p><b>Масса</b> — мера инертных свойств тела. Если произвольная сила в&nbsp;инерциальной системе отсчёта одинаково ускоряет разные тела, этим телам приписывают одинаковую инертную массу.</p>
+    </div></dd>
+</body>
+</html>

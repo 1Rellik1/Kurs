@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="Первый.css">
+</head>
+<body>
+<form name="form">
+<center>
+<style>
+.kfv {
+display:block;
+overflow:hidden;
+margin:0; padding:0;
+width:680px;
+height:370px;
+font-size:14px !important;
+}
+
+#galka {z-index:5; position:relative; top:-230px; left:300px; width:200px; height:1px;}
+*html #galka {top:-238px;}
+
+#about_e {display:none; position:relative; top:-13px; font-size:15px; color:#9f1e00;}
+*html #about_e  {top:-63px;}
+
+#pusto {display:none; height:13px; font-size:5px;}
+
+form {padding:0; margin:0;}
+
+.tabs {
+overflow:hidden;
+position:relative;
+left:0px;
+height:370px;
+padding:40px 0 0;
+margin:0;
+zoom:1;
+}
+
+.tabs dt {
+color:#424141;
+display:table-cell;
+float:left;
+width:138px;
+line-height:22px;
+height:22px;
+white-space:nowrap;
+border:1px solid #dadada !important;
+padding:0 13px;
+position:relative;
+margin:0 0 2px;
+cursor:pointer;
+border-radius:2px;
+
+-webkit-border-radius:2px;
+-moz-border-radius:2px;
+}
+
+*html .tabs dt {width:183px;}
+
+.tabs dt:hover {
+background-color:#FFA310;
+}
+
+.tabs dt.selected {
+border-color:#FFA310;
+background:#FFA310;
+color:#fff;
+z-index:2;
+cursor:auto;
+}
+
+.tabs dd {
+background:#fff;
+display:none;
+top:0;
+left:140px;
+position:absolute;
+z-index:3;
+}
+
+.tabs dd.selected {
+display:block;
+}
+
+.tabs .tab-content {
+border:1px solid #FED84F;
+margin:0;
+padding:7px;
+height:340px;
+width:370px;
+}
+.tabs select{
+width:168px;
+}
+
+*html .tabs .tab-content {width:347px;}
+
+.tabs dd p {font-size:13px !important; text-align:left; line-height:16px !important; margin:11px 0 0 !important; padding:0 !important;}
+*html .tabs dd p {font-size:12px !important; line-height:15px !important;}
+.tabs dd h6 {font-size:17px; line-height:17px; padding:0; margin:13px 0 5px;}
+
+.converter {font-size:13px;}
+.converter input {font-family:Arial Narrow; width:110px; padding:0; margin:2px 0;}
+.eda {color:#9f1e00 !important; border:1px solid #9f1e00 !important;}
+.enet {color:#000 !important; border:1px solid #9a9a9a !important;}
+.converter select {padding:0; margin:0; font-size:13px; border:1px solid #9a9a9a;}
+
+#rashod1eb,#rashod2eb,#rabotab1eb,#rabotab2eb {font-size:10px;}
+#potokm1eb,#potokm2eb,#momentb1eb,#momentb2eb {font-size:11px;}
+
+.si {font-size:12px;}
+.hdrrr {height:20px; vertical-align:middle; font-weight:bold; font-style:italic; font-size:11px;}
+.si td {padding:2px 5px; margin:0; line-height:15px; width:33%;}
+.si .nech {background-color:#f2f2ee;}
+</style>
+<div class="kfv">
+<dl class="tabs">
+
+<dt class="" style="margin-right:387px;">Вес, масса</dt><dd class=""><div class="tab-content">
+<h2>Вес, масса</h2>
+<table class="converter"><tbody><tr><td>
+<select id="ves1e" onchange="edi('ves1e'); convert('ves1','ves2');">
+<option value="нг">нанограмм (нг)</option>
+<option value="мг">миллиграмм (мг)</option>
+<option value="г" selected="">грамм (г)</option>
+<option value="кг">килограмм (кг)</option>
+<option value="ц">центнер (ц)</option>
+<option value="т">тонна (т)</option>
+<option value="кт">килотонна (кт)</option>
+<option value="Н">ньютон</option>
+<option value="кН">килоньютон</option>
+<option value="emu">ед. атомн. массы</option>
+<option value="кар.">карат</option>
+<option value="унц.">унция</option>
+<option value="lb">англ. фунт</option>
+<option value="р.ф.">рус. фунт</option>
+<option value="п.">пуд</option>
+</select></td><td>в</td><td>
+<select id="ves2e" onchange="edi('ves2e'); convert('ves1','ves2');">
+<option value="нг">нанограмм (нг)</option>
+<option value="мг">миллиграмм (мг)</option>
+<option value="г">грамм (г)</option>
+<option value="кг" selected="">килограмм (кг)</option>
+<option value="ц">центнер (ц)</option>
+<option value="т">тонна (т)</option>
+<option value="кт">килотонна (кт)</option>
+<option value="Н">ньютон</option>
+<option value="кН">килоньютон</option>
+<option value="emu">ед. атомн. массы</option>
+<option value="кар.">карат</option>
+<option value="унц.">унция</option>
+<option value="lb">англ. фунт</option>
+<option value="р.ф.">рус. фунт</option>
+<option value="п.">пуд</option>
+</select></td></tr><tr><td nowrap="">
+<input type="text" id="ves1" >&nbsp;<b id="ves1eb">г</b>
+</td><td>=</td><td nowrap="">
+<input type="text" id="ves2">&nbsp;<b id="ves2eb">кг</b>
+</td></tr></tbody></table>
+<div id="pusto">&nbsp;</div><input type="submit" value="Перевести">
+<p><b>Вес</b> — сила, с которой взаимодействуют тело и&nbsp;опора этого тела (или&nbsp;подвес, к&nbsp;которому прикреплено тело).</p>
+<p><b>Масса</b> — мера инертных свойств тела. Если произвольная сила в&nbsp;инерциальной системе отсчёта одинаково ускоряет разные тела, этим телам приписывают одинаковую инертную массу.</p>
+</div></dd>
+
+<dt class="">Расход топлива</dt><dd class=""><div class="tab-content"><h2>Расход топлива</h2>
+<form onsubmit="rashod('rashod1','rashod2'); return false;"><table class="converter"><tbody><tr><td>
+<select id="rashod1e" onchange="edi('rashod1e'); rashod('rashod1','rashod2');">
+<option value="l/100km">литры на 100 км</option>
+<option value="км/л" selected="">км на литр</option>
+<option value="g/100m">галлон/100 миль</option>
+<option value="mpg">мили/галлон US</option>
+</select></td><td>в</td><td>
+<select id="rashod2e" onchange="edi('rashod2e'); rashod('rashod1','rashod2');">
+<option value="l/100km" selected="">литры на 100 км</option>
+<option value="км/л">км на литр</option>
+<option value="g/100m">галлон/100 миль</option>
+<option value="mpg">мили/галлон US</option>
+</select></td></tr><tr><td nowrap="">
+<input type="text" id="rashod1" onclick="gebi(this.id).className='enet';" onchange="check('rashod1'); rashod('rashod1','rashod2');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;rashod1\&quot;); rashod(\&quot;rashod1\&quot;,\&quot;rashod2\&quot;);&quot;,timeout)}">&nbsp;<b id="rashod1eb">км/л</b>
+</td><td>=</td><td nowrap="">
+<input type="text" id="rashod2" onclick="gebi(this.id).className='enet';" onchange="check('rashod2'); rashod('rashod2','rashod1');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;rashod2\&quot;); rashod(\&quot;rashod2\&quot;,\&quot;rashod1\&quot;);&quot;,timeout)}">&nbsp;<b id="rashod2eb">l/100km</b>
+</td></tr></tbody></table>
+<div id="pusto">&nbsp;</div><input type="submit" value="Перевести" onclick="check('rashod1'); check('rashod2'); rashod('rashod1','rashod2');"></form>
+<p><b>Расход топлива</b> — расход единицы топлива на&nbsp;единицу расстояния или в&nbsp;единицу времени.</p>
+<p>Является одной из важных характеристик двигателя.</p>
+</div></dd>
+
+<dt class="" style="margin-right:387px;">Время</dt><dd class=""><div class="tab-content"><h2>Время</h2>
+<form onsubmit="convert('vremya1','vremya2'); return false;"><table class="converter"><tbody><tr><td>
+<select id="vremya1e" onchange="edi('vremya1e'); convert('vremya1','vremya2');">
+<option value="с">секунды (с)</option>
+<option value="мин" selected="">минуты (мин)</option>
+<option value="ч">часы (ч)</option>
+<option value="сут.">сутки</option>
+<option value="нед.">недели</option>
+<option value="г.">года</option>
+<option value="в.">века</option>
+</select></td><td>в</td><td>
+<select id="vremya2e" onchange="edi('vremya2e'); convert('vremya1','vremya2');">
+<option value="с" selected="">секунды (с)</option>
+<option value="мин">минуты (мин)</option>
+<option value="ч">часы (ч)</option>
+<option value="сут.">сутки</option>
+<option value="нед.">недели</option>
+<option value="г.">года</option>
+<option value="в.">века</option>
+</select></td></tr><tr><td nowrap="">
+<input type="text" id="vremya1" onclick="gebi(this.id).className='enet';" onchange="check('vremya1'); convert('vremya1','vremya2');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;vremya1\&quot;); convert(\&quot;vremya1\&quot;,\&quot;vremya2\&quot;);&quot;,timeout)}">&nbsp;<b id="vremya1eb">мин</b>
+</td><td>=</td><td nowrap="">
+<input type="text" id="vremya2" onclick="gebi(this.id).className='enet';" onchange="check('vremya2'); convert('vremya2','vremya1');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;vremya2\&quot;); convert(\&quot;vremya2\&quot;,\&quot;vremya1\&quot;);&quot;,timeout)}">&nbsp;<b id="vremya2eb">с</b>
+</td></tr></tbody></table>
+<div id="pusto">&nbsp;</div><input type="submit" value="Перевести" onclick="check('vremya1'); check('vremya2'); convert('vremya1','vremya2');"></form>
+<p><b>Время</b> в классической физике — непрерывная величина, априорная характеристика мира. В&nbsp;качестве основы измерения берётся некая последовательность периодичных событий (то есть происходящих через равные промежутки времени).</p>
+<p>В релятивистской физике время — часть единого пространства-времени, и, значит, может меняться при&nbsp;его преобразованиях.</p>
+</div></dd>
+
+<dt class="">Скорость</dt><dd class=""><div class="tab-content"><h2>Скорость</h2>
+<form onsubmit="convert('skorost1','skorost2'); return false;"><table class="converter"><tbody><tr><td>
+<select id="skorost1e" onchange="edi('skorost1e'); convert('skorost1','skorost2');">
+<option value="км/с">км в секунду</option>
+<option value="м/с">метры в секунду</option>
+<option value="км/ч" selected="">км в час (км/ч)</option>
+<option value="м/мин">метры в минуту</option>
+<option value="mps">мили в секунду</option>
+<option value="mph">мили в час</option>
+<option value="fps">футы в секунду</option>
+<option value="fpm">футы в минуту</option>
+<option value="узл.">узлы (мор. м/час)</option>
+</select></td><td>в</td><td>
+<select id="skorost2e" onchange="edi('skorost2e'); convert('skorost1','skorost2');">
+<option value="км/с">км в секунду</option>
+<option value="м/с" selected="">метры в секунду</option>
+<option value="км/ч">км в час (км/ч)</option>
+<option value="м/мин">метры в минуту</option>
+<option value="mps">мили в секунду</option>
+<option value="mph">мили в час</option>
+<option value="fps">футы в секунду</option>
+<option value="fpm">футы в минуту</option>
+<option value="узл.">узлы (мор. м/час)</option>
+</select></td></tr><tr><td nowrap="">
+<input type="text" id="skorost1" onclick="gebi(this.id).className='enet';" onchange="check('skorost1'); convert('skorost1','skorost2');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;skorost1\&quot;); convert(\&quot;skorost1\&quot;,\&quot;skorost2\&quot;);&quot;,timeout)}">&nbsp;<b id="skorost1eb">км/ч</b>
+</td><td>=</td><td nowrap="">
+<input type="text" id="skorost2" onclick="gebi(this.id).className='enet';" onchange="check('skorost2'); convert('skorost2','skorost1');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;skorost2\&quot;); convert(\&quot;skorost2\&quot;,\&quot;skorost1\&quot;);&quot;,timeout)}">&nbsp;<b id="skorost2eb">м/с</b>
+</td></tr></tbody></table>
+<div id="pusto">&nbsp;</div><input type="submit" value="Перевести" onclick="check('skorost1'); check('skorost2'); convert('skorost1','skorost2');"></form>
+<p><b>Скорость</b> — векторная величина, характеризующая быстроту перемещения и&nbsp;направление движения материальной точки в&nbsp;пространстве относительно выбранной системы отсчёта.</p>
+<p>В науке используется также скорость в&nbsp;широком смысле, то&nbsp;есть как скорость изменения какой-либо величины.</p>
+</div></dd>
+
+<dt class="" style="margin-right:387px;">Давление</dt><dd class=""><div class="tab-content"><h2>Давление</h2>
+<form onsubmit="convert('davlenie1','davlenie2'); return false;"><table class="converter"><tbody><tr><td>
+<select id="davlenie1e" onchange="edi('davlenie1e'); convert('davlenie1','davlenie2');">
+<option value="Па">паскаль (Па)</option>
+<option value="кПа">кПа</option>
+<option value="гПа">гПа</option>
+<option value="МПа">МПа</option>
+<option value="Н/м<sup>2</sup>">ньютоны на кв. м</option>
+<option value="торр">мм рт. столба</option>
+<option value="атм" selected="">атмосфера физ.</option>
+<option value="ат">атмосфера техн.</option>
+<option value="бар">бар</option>
+</select></td><td>в</td><td>
+<select id="davlenie2e" onchange="edi('davlenie2e'); convert('davlenie1','davlenie2');">
+<option value="Па">паскаль (Па)</option>
+<option value="кПа" selected="">кПа</option>
+<option value="гПа">гПа</option>
+<option value="МПа">МПа</option>
+<option value="Н/м<sup>2</sup>">ньютоны на кв. м</option>
+<option value="торр">мм рт. столба</option>
+<option value="атм">атмосфера физ.</option>
+<option value="ат">атмосфера техн.</option>
+<option value="бар">бар</option>
+</select></td></tr><tr><td nowrap="">
+<input type="text" id="davlenie1" onclick="gebi(this.id).className='enet';" onchange="check('davlenie1'); convert('davlenie1','davlenie2');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;davlenie1\&quot;); convert(\&quot;davlenie1\&quot;,\&quot;davlenie2\&quot;);&quot;,timeout)}">&nbsp;<b id="davlenie1eb">атм</b>
+</td><td>=</td><td nowrap="">
+<input type="text" id="davlenie2" onclick="gebi(this.id).className='enet';" onchange="check('davlenie2'); convert('davlenie2','davlenie1');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;davlenie2\&quot;); convert(\&quot;davlenie2\&quot;,\&quot;davlenie1\&quot;);&quot;,timeout)}">&nbsp;<b id="davlenie2eb">кПа</b>
+</td></tr></tbody></table>
+<div id="pusto">&nbsp;</div><input type="submit" value="Перевести" onclick="check('davlenie1'); check('davlenie2'); convert('davlenie1','davlenie2');"></form>
+<p><b>Давление</b> — величина, характеризующая состояние сплошной среды и&nbsp;численно равная силе, действующей на&nbsp;единицу площади поверхности перпендикулярно этой поверхности.</p>
+<p>В большинстве приборов измеряемое давление преобразуется в деформацию упругих элементов, поэтому они называются деформационными.</p>
+</div></dd>
+
+<dt class="">Скорость потока (м)</dt><dd class=""><div class="tab-content"><h2>Скорость потока (массовая)</h2>
+<form onsubmit="convert('potokm1','potokm2'); return false;"><table class="converter"><tbody><tr><td>
+<select id="potokm1e" onchange="edi('potokm1e'); convert('potokm1','potokm2');">
+<option value="т/с">тонна / секунду</option>
+<option value="т/мин">тонна / минуту</option>
+<option value="т/ч">тонна / час</option>
+<option value="т/сут." selected="">тонна / сутки</option>
+<option value="кг/с">кг / секунду</option>
+<option value="кг/мин">кг / минуту</option>
+<option value="кг/ч">кг / час</option>
+<option value="кг/сут.">кг / сутки</option>
+<option value="г/с">грамм / секунду</option>
+<option value="г/мин">грамм / минуту</option>
+<option value="г/ч">грамм / час</option>
+<option value="г/сут.">грамм / сутки</option>
+</select></td><td>в</td><td>
+<select id="potokm2e" onchange="edi('potokm2e'); convert('potokm1','potokm2');">
+<option value="т/с">тонна / секунду</option>
+<option value="т/мин">тонна / минуту</option>
+<option value="т/ч">тонна / час</option>
+<option value="т/сут.">тонна / сутки</option>
+<option value="кг/с">кг / секунду</option>
+<option value="кг/мин">кг / минуту</option>
+<option value="кг/ч">кг / час</option>
+<option value="кг/сут.">кг / сутки</option>
+<option value="г/с" selected="">грамм / секунду</option>
+<option value="г/мин">грамм / минуту</option>
+<option value="г/ч">грамм / час</option>
+<option value="г/сут.">грамм / сутки</option>
+</select></td></tr><tr><td nowrap="">
+<input type="text" id="potokm1" onclick="gebi(this.id).className='enet';" onchange="check('potokm1'); convert('potokm1','potokm2');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;potokm1\&quot;); convert(\&quot;potokm1\&quot;,\&quot;potokm2\&quot;);&quot;,timeout)}">&nbsp;<b id="potokm1eb">т/сут.</b>
+</td><td>=</td><td nowrap="">
+<input type="text" id="potokm2" onclick="gebi(this.id).className='enet';" onchange="check('potokm2'); convert('potokm2','potokm1');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;potokm2\&quot;); convert(\&quot;potokm2\&quot;,\&quot;potokm1\&quot;);&quot;,timeout)}">&nbsp;<b id="potokm2eb">г/с</b>
+</td></tr></tbody></table>
+<div id="pusto">&nbsp;</div><input type="submit" value="Перевести" onclick="check('potokm1'); check('potokm2'); convert('potokm1','potokm2');"></form>
+<p><b>Скорость потока (массовая)</b> — масса вещества, проходящего через поперечное сечение потока в&nbsp;единицу времени.</p>
+</div></dd>
+
+<dt class="" style="margin-right:387px;">Длина, расстояние</dt><dd class=""><div class="tab-content"><h2>Длина, расстояние</h2>
+<form onsubmit="convert('dlina1','dlina2'); return false;"><table class="converter"><tbody><tr><td>
+<select id="dlina1e" onchange="edi('dlina1e'); convert('dlina1','dlina2');">
+<option value="А">ангстрем (А)</option>
+<option value="нм">нанометр (нм)</option>
+<option value="мкм">мкм (микрон)</option>
+<option value="мм">миллиметр (мм)</option>
+<option value="см">сантиметр (см)</option>
+<option value="дм">дециметр (дм)</option>
+<option value="м">метр (м)</option>
+<option value="км">километр (км)</option>
+<option value="пк" selected="">парсек (пк)</option>
+<option value="ly">световой год</option>
+<option value="au">астрон. ед. (au)</option>
+<option value="лье">лига, лье</option>
+<option value="mi">миля (mi)</option>
+<option value="yd">ярд (yd)</option>
+<option value="ft">фут (ft)</option>
+<option value="in">дюйм (in)</option>
+<option value="лин.">линия</option>
+<option value="pt">пункт (pt)</option>
+</select></td><td>в</td><td>
+<select id="dlina2e" onchange="edi('dlina2e'); convert('dlina1','dlina2');">
+<option value="А">ангстрем (А)</option>
+<option value="нм">нанометр (нм)</option>
+<option value="мкм">мкм (микрон)</option>
+<option value="мм">миллиметр (мм)</option>
+<option value="см">сантиметр (см)</option>
+<option value="дм">дециметр (дм)</option>
+<option value="м" selected="">метр (м)</option>
+<option value="км">километр (км)</option>
+<option value="пк">парсек (пк)</option>
+<option value="ly">световой год</option>
+<option value="au">астрон. ед. (au)</option>
+<option value="лье">лига, лье</option>
+<option value="mi">миля (mi)</option>
+<option value="yd">ярд (yd)</option>
+<option value="ft">фут (ft)</option>
+<option value="in">дюйм (in)</option>
+<option value="лин.">линия</option>
+<option value="pt">пункт (pt)</option>
+</select></td></tr><tr><td nowrap="">
+<input type="text" id="dlina1" onclick="gebi(this.id).className='enet';" onchange="check('dlina1'); convert('dlina1','dlina2');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;dlina1\&quot;); convert(\&quot;dlina1\&quot;,\&quot;dlina2\&quot;);&quot;,timeout)}">&nbsp;<b id="dlina1eb">пк</b>
+</td><td>=</td><td nowrap="">
+<input type="text" id="dlina2" onclick="gebi(this.id).className='enet';" onchange="check('dlina2'); convert('dlina2','dlina1');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;dlina2\&quot;); convert(\&quot;dlina2\&quot;,\&quot;dlina1\&quot;);&quot;,timeout)}">&nbsp;<b id="dlina2eb">м</b>
+</td></tr></tbody></table>
+<div id="pusto">&nbsp;</div><input type="submit" value="Перевести" onclick="check('dlina1'); check('dlina2'); convert('dlina1','dlina2');"></form>
+<p><b>Длина</b> — размер предмета в&nbsp;продольном направлении, то&nbsp;есть расстояние между его&nbsp;двумя наиболее удалёнными точками. Это&nbsp;одна из&nbsp;фундаментальных единиц измерения, на&nbsp;основе которых образуются другие единицы.</p>
+<p><b>Расстояние</b> — степень удалённости объектов друг&nbsp;от&nbsp;друга.</p>
+</div></dd>
+
+<dt class="">Скорость потока (о)</dt><dd class=""><div class="tab-content"><h2>Скорость потока (объёмная)</h2>
+<form onsubmit="convert('potokob1','potokob2'); return false;"><table class="converter"><tbody><tr><td>
+<select id="potokob1e" onchange="edi('potokob1e'); convert('potokob1','potokob2');">
+<option value="м<sup>3</sup>/с">кубометр в сек.</option>
+<option value="м<sup>3</sup>/мин">кубометр в мин.</option>
+<option value="м<sup>3</sup>/ч" selected="">кубометр в час</option>
+<option value="м<sup>3</sup>/сут">кубометр в сутки</option>
+<option value="м<sup>3</sup>/год">кубометр в год</option>
+<option value="л/с">литр в секунду</option>
+<option value="л/мин">литр в минуту</option>
+<option value="л/ч">литр в час</option>
+<option value="л/сут">литр в сутки</option>
+<option value="л/год">литр в год</option>
+</select></td><td>в</td><td>
+<select id="potokob2e" onchange="edi('potokob2e'); convert('potokob1','potokob2');">
+<option value="м<sup>3</sup>/с">кубометр в сек.</option>
+<option value="м<sup>3</sup>/мин">кубометр в мин.</option>
+<option value="м<sup>3</sup>/ч">кубометр в час</option>
+<option value="м<sup>3</sup>/сут">кубометр в сутки</option>
+<option value="м<sup>3</sup>/год">кубометр в год</option>
+<option value="л/с" selected="">литр в секунду</option>
+<option value="л/мин">литр в минуту</option>
+<option value="л/ч">литр в час</option>
+<option value="л/сут">литр в сутки</option>
+<option value="л/год">литр в год</option>
+</select></td></tr><tr><td nowrap="">
+<input type="text" id="potokob1" onclick="gebi(this.id).className='enet';" onchange="check('potokob1'); convert('potokob1','potokob2');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;potokob1\&quot;); convert(\&quot;potokob1\&quot;,\&quot;potokob2\&quot;);&quot;,timeout)}">&nbsp;<b id="potokob1eb">м<sup>3</sup>/ч</b>
+</td><td>=</td><td nowrap="">
+<input type="text" id="potokob2" onclick="gebi(this.id).className='enet';" onchange="check('potokob2'); convert('potokob2','potokob1');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;potokob2\&quot;); convert(\&quot;potokob2\&quot;,\&quot;potokob1\&quot;);&quot;,timeout)}">&nbsp;<b id="potokob2eb">л/с</b>
+</td></tr></tbody></table>
+<div id="pusto">&nbsp;</div><input type="submit" value="Перевести" onclick="check('potokob1'); check('potokob2'); convert('potokob1','potokob2');"></form>
+<p><b>Скорость потока (объёмная)</b> — величина, характеризующая объёмное количество вещества, проходящее через поперечное сечение потока в&nbsp;единицу времени.</p>
+<p>&nbsp;</p>
+</div></dd>
+
+<dt class="" style="margin-right:387px;">Доли и проценты</dt><dd class=""><div class="tab-content"><h2>Доли и проценты</h2>
+<form onsubmit="convert('dolab1','dolab2'); return false;"><table class="converter"><tbody><tr><td>
+<select id="dolab1e" onchange="edi('dolab1e'); convert('dolab1','dolab2');">
+<option value="ед.">единицы (1)</option>
+<option value="%" selected="">проценты (%) </option>
+<option value="‰">промилле (‰)</option>
+<option value="ppm">частей на млн.</option>
+<option value="ppb">частей на млрд.</option>
+</select></td><td>в</td><td>
+<select id="dolab2e" onchange="edi('dolab2e'); convert('dolab1','dolab2');">
+<option value="ед." selected="">единицы (1)</option>
+<option value="%">проценты (%) </option>
+<option value="‰">промилле (‰)</option>
+<option value="ppm">частей на млн.</option>
+<option value="ppb">частей на млрд.</option>
+</select></td></tr><tr><td nowrap="">
+<input type="text" id="dolab1" onclick="gebi(this.id).className='enet';" onchange="check('dolab1'); convert('dolab1','dolab2');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;dolab1\&quot;); convert(\&quot;dolab1\&quot;,\&quot;dolab2\&quot;);&quot;,timeout)}">&nbsp;<b id="dolab1eb">%</b>
+</td><td>=</td><td nowrap="">
+<input type="text" id="dolab2" onclick="gebi(this.id).className='enet';" onchange="check('dolab2'); convert('dolab2','dolab1');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;dolab2\&quot;); convert(\&quot;dolab2\&quot;,\&quot;dolab1\&quot;);&quot;,timeout)}">&nbsp;<b id="dolab2eb">ед.</b>
+</td></tr></tbody></table>
+<div id="pusto">&nbsp;</div><input type="submit" value="Перевести" onclick="check('dolab1'); check('dolab2'); convert('dolab1','dolab2');"></form>
+<p><b>Доля</b> — часть чего-нибудь; а также старорусская единица измерения массы.</p>
+<p><b>Процент (%)</b> — одна сотая доля. Используется для&nbsp;обозначения доли чего-либо по&nbsp;отношению к&nbsp;целому.</p>
+</div></dd>
+
+<dt class="">Температура</dt><dd class=""><div class="tab-content"><h2>Температура</h2>
+<form onsubmit="temper('temperb1','temperb2'); return false;"><table class="converter"><tbody><tr><td>
+<select id="temperb1e" onchange="edi('temperb1e'); temper('temperb1','temperb2');">
+<option value="°C">° Цельсия (°C)</option>
+<option value="°F" selected="">° Фаренгейта (°F)</option>
+<option value="K">кельвин (K)</option>
+<option value="°R">° Реомюра (°R)</option>
+<option value="°Ra">° Ранкина (°Ra)</option>
+</select></td><td>в</td><td>
+<select id="temperb2e" onchange="edi('temperb2e'); temper('temperb1','temperb2');">
+<option value="°C" selected="">° Цельсия (°C)</option>
+<option value="°F">° Фаренгейта (°F)</option>
+<option value="K">кельвин (K)</option>
+<option value="°R">° Реомюра (°R)</option>
+<option value="°Ra">° Ранкина (°Ra)</option>
+</select></td></tr><tr><td nowrap="">
+<input type="text" id="temperb1" onclick="gebi(this.id).className='enet';" onchange="check('temperb1'); temper('temperb1','temperb2');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;temperb1\&quot;); temper(\&quot;temperb1\&quot;,\&quot;temperb2\&quot;);&quot;,timeout)}">&nbsp;<b id="temperb1eb">°F</b>
+</td><td>=</td><td nowrap="">
+<input type="text" id="temperb2" onclick="gebi(this.id).className='enet';" onchange="check('temperb2'); temper('temperb2','temperb1');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;temperb2\&quot;); temper(\&quot;temperb2\&quot;,\&quot;temperb1\&quot;);&quot;,timeout)}">&nbsp;<b id="temperb2eb">°C</b>
+</td></tr></tbody></table>
+<div id="pusto">&nbsp;</div><input type="submit" value="Перевести" onclick="check('temperb1'); check('temperb2'); temper('temperb1','temperb2');"></form>
+<p><b>Температура</b> — величина, примерно характеризующая приходящуюся на&nbsp;одну степень свободы среднюю кинетическую энергию частиц системы, находящейся в&nbsp;состоянии термодинамического равновесия.</p>
+<p>В системе СИ температура измеряется в&nbsp;кельвинах. Но на практике часто применяют градусы Цельсия из-за&nbsp;привязки к&nbsp;важным характеристикам воды.</p>
+</div></dd>
+
+<dt class="" style="margin-right:387px;">Момент силы (вращ.)</dt><dd class=""><div class="tab-content"><h2>Момент силы (вращательный)</h2>
+<form onsubmit="convert('momentb1','momentb2'); return false;"><table class="converter"><tbody><tr><td>
+<select id="momentb1e" onchange="edi('momentb1e'); convert('momentb1','momentb2');">
+<option value="н•м">ньютон-метр</option>
+<option value="н•см">ньютон-см</option>
+<option value="дин•м">дина-метр</option>
+<option value="дин•см" selected="">дина-см</option>
+<option value="кгс•м">кг силы-метр</option>
+<option value="кгс•см">кг силы-см</option>
+<option value="гс•м">г силы-метр</option>
+<option value="гс•см">г силы-см</option>
+</select></td><td>в</td><td>
+<select id="momentb2e" onchange="edi('momentb2e'); convert('momentb1','momentb2');">
+<option value="н•м" selected="">ньютон-метр</option>
+<option value="н•см">ньютон-см</option>
+<option value="дин•м">дина-метр</option>
+<option value="дин•см">дина-см</option>
+<option value="кгс•м">кг силы-метр</option>
+<option value="кгс•см">кг силы-см</option>
+<option value="гс•м">г силы-метр</option>
+<option value="гс•см">г силы-см</option>
+</select></td></tr><tr><td nowrap="">
+<input type="text" id="momentb1" onclick="gebi(this.id).className='enet';" onchange="check('momentb1'); convert('momentb1','momentb2');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;momentb1\&quot;); convert(\&quot;momentb1\&quot;,\&quot;momentb2\&quot;);&quot;,timeout)}">&nbsp;<b id="momentb1eb">дин•см</b>
+</td><td>=</td><td nowrap="">
+<input type="text" id="momentb2" onclick="gebi(this.id).className='enet';" onchange="check('momentb2'); convert('momentb2','momentb1');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;momentb2\&quot;); convert(\&quot;momentb2\&quot;,\&quot;momentb1\&quot;);&quot;,timeout)}">&nbsp;<b id="momentb2eb">н•м</b>
+</td></tr></tbody></table>
+<div id="pusto">&nbsp;</div><input type="submit" value="Перевести" onclick="check('momentb1'); check('momentb2'); convert('momentb1','momentb2');"></form>
+<p><b>Момент силы</b> — величина, характеризующая вращательное действие силы на&nbsp;твёрдое тело.</p>
+</div></dd>
+
+<dt class="">Угловая мера</dt><dd class=""><div class="tab-content"><h2>Угловая мера</h2>
+<form onsubmit="convert('uglomerab1','uglomerab2'); return false;"><table class="converter"><tbody><tr><td>
+<select id="uglomerab1e" onchange="edi('uglomerab1e'); convert('uglomerab1','uglomerab2');">
+<option value="окр.">окружность</option>
+<option value="пи" selected="">Пи (PI)</option>
+<option value="rad">радиан (rad)</option>
+<option value="°">градус (deg)</option>
+<option value="grad">град (grad)</option>
+<option value="'">минута (')</option>
+<option value="''">секунда ('')</option>
+<option value="р.">румб</option>
+</select></td><td>в</td><td>
+<select id="uglomerab2e" onchange="edi('uglomerab2e'); convert('uglomerab1','uglomerab2');">
+<option value="окр.">окружность</option>
+<option value="пи">Пи (PI)</option>
+<option value="rad">радиан (rad)</option>
+<option value="°" selected="">градус (deg)</option>
+<option value="grad">град (grad)</option>
+<option value="'">минута (')</option>
+<option value="''">секунда ('')</option>
+<option value="р.">румб</option>
+</select></td></tr><tr><td nowrap="">
+<input type="text" id="uglomerab1" onclick="gebi(this.id).className='enet';" onchange="check('uglomerab1'); convert('uglomerab1','uglomerab2');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;uglomerab1\&quot;); convert(\&quot;uglomerab1\&quot;,\&quot;uglomerab2\&quot;);&quot;,timeout)}">&nbsp;<b id="uglomerab1eb">π</b>
+</td><td>=</td><td nowrap="">
+<input type="text" id="uglomerab2" onclick="gebi(this.id).className='enet';" onchange="check('uglomerab2'); convert('uglomerab2','uglomerab1');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;uglomerab2\&quot;); convert(\&quot;uglomerab2\&quot;,\&quot;uglomerab1\&quot;);&quot;,timeout)}">&nbsp;<b id="uglomerab2eb">°</b>
+</td></tr></tbody></table>
+<div id="pusto">&nbsp;</div><input type="submit" value="Перевести" onclick="check('uglomerab1'); check('uglomerab2'); convert('uglomerab1','uglomerab2');"></form>
+<p><b>Угол</b> — неограниченная геометрическая фигура, образованная двумя лучами (сторонами угла), выходящими из&nbsp;одной точки (вершины угла).</p>
+<p>Углом называют также <b>угловую меру.</b></p>
+</div></dd>
+
+<dt class="" style="margin-right:387px;">Мощность</dt><dd class=""><div class="tab-content"><h2>Мощность</h2>
+<form onsubmit="convert('mocshb1','mocshb2'); return false;"><table class="converter"><tbody><tr><td>
+<select id="mocshb1e" onchange="edi('mocshb1e'); convert('mocshb1','mocshb2');">
+<option value="МВт">мегаватт (МВт)</option>
+<option value="кВт">киловатт (кВт)</option>
+<option value="Вт">ватт (W, Вт)</option>
+<option value="кал/с">калорий/секунду</option>
+<option value="bhp">котловая л.с.</option>
+<option value="ehp">электрич. л.с.</option>
+<option value="л.с." selected="">лошадиная сила</option>
+<option value="mhp">метрическая л.с.</option>
+<option value="кгс•м/с">кгс•м/с</option>
+<option value="Дж/с">джоуль/секунду</option>
+<option value="Дж/ч">джоуль/час</option>
+<option value="эрг/с">эрг в секунду</option>
+</select></td><td>в</td><td>
+<select id="mocshb2e" onchange="edi('mocshb2e'); convert('mocshb1','mocshb2');">
+<option value="МВт">мегаватт (МВт)</option>
+<option value="кВт" selected="">киловатт (кВт)</option>
+<option value="Вт">ватт (W, Вт)</option>
+<option value="кал/с">калорий/секунду</option>
+<option value="bhp">котловая л.с.</option>
+<option value="ehp">электрич. л.с.</option>
+<option value="л.с.">лошадиная сила</option>
+<option value="mhp">метрическая л.с.</option>
+<option value="кгс•м/с">кгс•м/с</option>
+<option value="Дж/с">джоуль/секунду</option>
+<option value="Дж/ч">джоуль/час</option>
+<option value="эрг/с">эрг в секунду</option>
+</select></td></tr><tr><td nowrap="">
+<input type="text" id="mocshb1" onclick="gebi(this.id).className='enet';" onchange="check('mocshb1'); convert('mocshb1','mocshb2');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;mocshb1\&quot;); convert(\&quot;mocshb1\&quot;,\&quot;mocshb2\&quot;);&quot;,timeout)}">&nbsp;<b id="mocshb1eb">л.с.</b>
+</td><td>=</td><td nowrap="">
+<input type="text" id="mocshb2" onclick="gebi(this.id).className='enet';" onchange="check('mocshb2'); convert('mocshb2','mocshb1');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;mocshb2\&quot;); convert(\&quot;mocshb2\&quot;,\&quot;mocshb1\&quot;);&quot;,timeout)}">&nbsp;<b id="mocshb2eb">кВт</b>
+</td></tr></tbody></table>
+<div id="pusto">&nbsp;</div><input type="submit" value="Перевести" onclick="check('mocshb1'); check('mocshb2'); convert('mocshb1','mocshb2');"></form>
+<p><b>Мощность</b> — величина, равная отношению работы, выполняемой за&nbsp;некоторый промежуток времени, к&nbsp;этому промежутку времени.</p>
+<p>Так как работа является мерой изменения энергии, мощность можно определить также как&nbsp;скорость изменения энергии системы.</p>
+</div></dd>
+
+<dt class="">Ускорение</dt><dd class=""><div class="tab-content"><h2>Ускорение</h2>
+<form onsubmit="convert('uskorb1','uskorb2'); return false;"><table class="converter"><tbody><tr><td>
+<select id="uskorb1e" onchange="edi('uskorb1e'); convert('uskorb1','uskorb2');">
+<option value="мм/с<sup>2</sup>">миллиметр / с2</option>
+<option value="м/с<sup>2</sup>">метр / с2</option>
+<option value="км/с<sup>2</sup>">километр / с2</option>
+<option value="m/s<sup>2</sup>">миля / с2</option>
+<option value="ft/s<sup>2</sup>">фут / с2</option>
+<option value="in/s<sup>2</sup>">дюйм / с2</option>
+<option value="g" selected="">g на Земле</option>
+</select></td><td>в</td><td>
+<select id="uskorb2e" onchange="edi('uskorb2e'); convert('uskorb1','uskorb2');">
+<option value="мм/с<sup>2</sup>">миллиметр / с2</option>
+<option value="м/с<sup>2</sup>" selected="">метр / с2</option>
+<option value="км/с<sup>2</sup>">километр / с2</option>
+<option value="m/s<sup>2</sup>">миля / с2</option>
+<option value="ft/s<sup>2</sup>">фут / с2</option>
+<option value="in/s<sup>2</sup>">дюйм / с2</option>
+<option value="g">g на Земле</option>
+</select></td></tr><tr><td nowrap="">
+<input type="text" id="uskorb1" onclick="gebi(this.id).className='enet';" onchange="check('uskorb1'); convert('uskorb1','uskorb2');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;uskorb1\&quot;); convert(\&quot;uskorb1\&quot;,\&quot;uskorb2\&quot;);&quot;,timeout)}">&nbsp;<b id="uskorb1eb">g</b>
+</td><td>=</td><td nowrap="">
+<input type="text" id="uskorb2" onclick="gebi(this.id).className='enet';" onchange="check('uskorb2'); convert('uskorb2','uskorb1');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;uskorb2\&quot;); convert(\&quot;uskorb2\&quot;,\&quot;uskorb1\&quot;);&quot;,timeout)}">&nbsp;<b id="uskorb2eb">м/с<sup>2</sup></b>
+</td></tr></tbody></table>
+<div id="pusto">&nbsp;</div><input type="submit" value="Перевести" onclick="check('uskorb1'); check('uskorb2'); convert('uskorb1','uskorb2');"></form>
+<p><b>Ускорение</b> — производная скорости по времени&nbsp;— векторная величина, показывающая, насколько изменяется вектор скорости точки при&nbsp;её&nbsp;движении за&nbsp;единицу времени.</p>
+</div></dd>
+
+<dt class="selected" style="margin-right:387px;">Объём, ёмкость</dt><dd class="selected"><div class="tab-content"><h2>Объём, ёмкость</h2>
+<form onsubmit="convert('obemb1','obemb2'); return false;"><table class="converter"><tbody><tr><td>
+<select id="obemb1e" onchange="edi('obemb1e'); convert('obemb1','obemb2');">
+<option value="м<sup>3</sup>">кубометр (м3)</option>
+<option value="дм<sup>3</sup>">куб. дм (дм3)</option>
+<option value="см<sup>3</sup>">куб. см (см3)</option>
+<option value="мм<sup>3</sup>">куб. мм (мм3)</option>
+<option value="hl">гектолитр (hl)</option>
+<option value="dl">декалитр (dl)</option>
+<option value="л" selected="">литр (л)</option>
+<option value="мл">миллилитр (мл)</option>
+<option value="gal">галлон (gal)</option>
+<option value="qt">кварта (qt)</option>
+<option value="pt">пинта (pt)</option>
+<option value=":-)">шкалик :-)</option>
+</select></td><td>в</td><td>
+<select id="obemb2e" onchange="edi('obemb2e'); convert('obemb1','obemb2');">
+<option value="м<sup>3</sup>" selected="">кубометр (м3)</option>
+<option value="дм<sup>3</sup>">куб. дм (дм3)</option>
+<option value="см<sup>3</sup>">куб. см (см3)</option>
+<option value="мм<sup>3</sup>">куб. мм (мм3)</option>
+<option value="hl">гектолитр (hl)</option>
+<option value="dl">декалитр (dl)</option>
+<option value="л">литр (л)</option>
+<option value="мл">миллилитр (мл)</option>
+<option value="gal">галлон (gal)</option>
+<option value="qt">кварта (qt)</option>
+<option value="pt">пинта (pt)</option>
+<option value=":-)">шкалик :-)</option>
+</select></td></tr><tr><td nowrap="">
+<input type="text" id="obemb1" onclick="gebi(this.id).className='enet';" onchange="check('obemb1'); convert('obemb1','obemb2');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;obemb1\&quot;); convert(\&quot;obemb1\&quot;,\&quot;obemb2\&quot;);&quot;,timeout)}">&nbsp;<b id="obemb1eb">л</b>
+</td><td>=</td><td nowrap="">
+<input type="text" id="obemb2" onclick="gebi(this.id).className='enet';" onchange="check('obemb2'); convert('obemb2','obemb1');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;obemb2\&quot;); convert(\&quot;obemb2\&quot;,\&quot;obemb1\&quot;);&quot;,timeout)}">&nbsp;<b id="obemb2eb">м<sup>3</sup></b>
+</td></tr></tbody></table>
+<div id="pusto">&nbsp;</div><input type="submit" value="Перевести" onclick="check('obemb1'); check('obemb2'); convert('obemb1','obemb2');"></form>
+<p><b>Объём</b> — это мера, характеризующая вместимость области пространства, которую оно занимает.</p>
+<p><b>Ёмкостью</b> чаще обозначают сосуды, тогда как объёмом чаще обозначают вместимое (газ, жидкость, сыпучие тела) в&nbsp;сосуд. Принципиальных различий нет. &nbsp;</p>
+</div></dd>
+
+<dt class="">Энергия, работа</dt><dd class=""><div class="tab-content"><h2>Энергия, работа</h2>
+<form onsubmit="convert('rabotab1','rabotab2'); return false;"><table class="converter"><tbody><tr><td>
+<select id="rabotab1e" onchange="edi('rabotab1e'); convert('rabotab1','rabotab2');">
+<option value="МДж">мегаджоуль</option>
+<option value="кДж">килоджоуль</option>
+<option value="Дж">джоуль (Дж)</option>
+<option value="Мкал">мегакалория)</option>
+<option value="ккал">килокалория</option>
+<option value="кал">калория</option>
+<option value="кВт•ч">киловатт-час</option>
+<option value="эрг">эрг</option>
+<option value="эВ">электронвольт</option>
+<option value="м•кг">метр-килограмм</option>
+<option value="квад">квад</option>
+<option value="BTU">брит. терм. ед.</option>
+<option value="т ТНТ">тонна тротила</option>
+<option value="кг ТНТ" selected="">кг тротила</option>
+</select></td><td>в</td><td>
+<select id="rabotab2e" onchange="edi('rabotab2e'); convert('rabotab1','rabotab2');">
+<option value="МДж" selected="">мегаджоуль</option>
+<option value="кДж">килоджоуль</option>
+<option value="Дж">джоуль (Дж)</option>
+<option value="Мкал">мегакалория</option>
+<option value="ккал">килокалория</option>
+<option value="кал">калория</option>
+<option value="кВт•ч">киловатт-час</option>
+<option value="эрг">эрг</option>
+<option value="эВ">электронвольт</option>
+<option value="м•кг">метр-килограмм</option>
+<option value="квад">квад</option>
+<option value="BTU">брит. терм. ед.</option>
+<option value="т ТНТ">тонна тротила</option>
+<option value="кг ТНТ">кг тротила</option>
+</select></td></tr><tr><td nowrap="">
+<input type="text" id="rabotab1" onclick="gebi(this.id).className='enet';" onchange="check('rabotab1'); convert('rabotab1','rabotab2');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;rabotab1\&quot;); convert(\&quot;rabotab1\&quot;,\&quot;rabotab2\&quot;);&quot;,timeout)}">&nbsp;<b id="rabotab1eb">кг ТНТ</b>
+</td><td>=</td><td nowrap="">
+<input type="text" id="rabotab2" onclick="gebi(this.id).className='enet';" onchange="check('rabotab2'); convert('rabotab2','rabotab1');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;rabotab2\&quot;); convert(\&quot;rabotab2\&quot;,\&quot;rabotab1\&quot;);&quot;,timeout)}">&nbsp;<b id="rabotab2eb">МДж</b>
+</td></tr></tbody></table>
+<div id="pusto">&nbsp;</div><input type="submit" value="Перевести" onclick="check('rabotab1'); check('rabotab2'); convert('rabotab1','rabotab2');"></form>
+<p><b>Энергия</b> — величина, являющаяся единой мерой различных форм движения материи и&nbsp;мерой перехода движения материи из&nbsp;одних форм в&nbsp;другие.</p>
+<p><b>Работа</b> — количество энергии, переданной или полученной системой.</p>
+</div></dd>
+
+<dt class="" style="margin-right:387px; margin-bottom:60px;">Площадь</dt><dd class=""><div class="tab-content"><h2>Площадь</h2>
+<form onsubmit="convert('plosb1','plosb2'); return false;"><table class="converter"><tbody><tr><td>
+<select id="plosb1e" onchange="edi('plosb1e'); convert('plosb1','plosb2');">
+<option value="км<sup>2</sup>">кв. километр</option>
+<option value="м<sup>2</sup>">кв. метр</option>
+<option value="см<sup>2</sup>">кв. сантиметр</option>
+<option value="мм<sup>2</sup>" selected="">кв. миллиметр</option>
+<option value="га">гектар (га)</option>
+<option value="д.">декар</option>
+<option value="ар">ар (сотка) (а)</option>
+<option value="б">барн (б)</option>
+<option value="акр">акр</option>
+<option value="кв.">квадрат</option>
+<option value="yd<sup>2</sup>">кв. ярд</option>
+<option value="ft<sup>2</sup>">кв. фут</option>
+<option value="in<sup>2</sup>">кв. дюйм</option>
+<option value="дес.">десятина</option>
+</select></td><td>в</td><td>
+<select id="plosb2e" onchange="edi('plosb2e'); convert('plosb1','plosb2');">
+<option value="км<sup>2</sup>">кв. километр</option>
+<option value="м<sup>2</sup>" selected="">кв. метр</option>
+<option value="см<sup>2</sup>">кв. сантиметр</option>
+<option value="мм<sup>2</sup>">кв. миллиметр</option>
+<option value="га">гектар (га)</option>
+<option value="д.">декар</option>
+<option value="ар">ар (сотка) (а)</option>
+<option value="б">барн (б)</option>
+<option value="акр">акр</option>
+<option value="кв.">квадрат</option>
+<option value="yd<sup>2</sup>">кв. ярд</option>
+<option value="ft<sup>2</sup>">кв. фут</option>
+<option value="in<sup>2</sup>">кв. дюйм</option>
+<option value="дес.">десятина</option>
+</select></td></tr><tr><td nowrap="">
+<input type="text" id="plosb1" onclick="gebi(this.id).className='enet';" onchange="check('plosb1'); convert('plosb1','plosb2');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;plosb1\&quot;); convert(\&quot;plosb1\&quot;,\&quot;plosb2\&quot;);&quot;,timeout)}">&nbsp;<b id="plosb1eb">мм<sup>2</sup></b>
+</td><td>=</td><td nowrap="">
+<input type="text" id="plosb2" onclick="gebi(this.id).className='enet';" onchange="check('plosb2'); convert('plosb2','plosb1');" onkeydown="if (real) {if((gecko)||(Math.abs(window.event.keyCode-38)!=1)) setTimeout(&quot;check(\&quot;plosb2\&quot;); convert(\&quot;plosb2\&quot;,\&quot;plosb1\&quot;);&quot;,timeout)}">&nbsp;<b id="plosb2eb">м<sup>2</sup></b>
+</td></tr></tbody></table>
+<div id="pusto">&nbsp;</div><input type="submit" value="Перевести" onclick="check('plosb1'); check('plosb2'); convert('plosb1','plosb2');"></form>
+<p><b>Площадь</b> — величина, в некотором смысле соответствующая размеру поверхности.</p>
+<p>В простейшем случае, когда фигуру можно разбить на&nbsp;конечное множество единичных квадратов, площадь равна числу квадратов.</p>
+</div></dd>
+
+<dt class="" style="margin-bottom:60px;"><i>Приставки СИ</i></dt><dd id="fuck" class="" style="z-index:6;"><div class="tab-content"><h2>Приставки СИ</h2>
+<table bgcolor="#ffffff" class="si" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr class="hdrrr"><td>Кратность</td><td>Приставка</td><td>Обозначение</td></tr>
+<tr class="nech"><td>10<sup>-9</sup></td><td>нано</td><td>н</td></tr>
+<tr><td>10<sup>-6</sup></td><td>микро</td><td>мк</td></tr>
+<tr class="nech"><td>10<sup>-3</sup></td><td>милли</td><td>м</td></tr>
+<tr><td>10<sup>-2</sup></td><td>санти</td><td>с</td></tr>
+<tr class="nech"><td>10<sup>-1</sup></td><td>деци</td><td>д</td></tr>
+<tr><td>10<sup>1</sup></td><td>дека</td><td>да</td></tr>
+<tr class="nech"><td>10<sup>2</sup></td><td>гекто</td><td>г</td></tr>
+<tr><td>10<sup>3</sup></td><td>кило</td><td>к</td></tr>
+<tr class="nech"><td>10<sup>6</sup></td><td>мега</td><td>М</td></tr>
+<tr><td>10<sup>9</sup></td><td>гига</td><td>Г</td></tr>
+</tbody></table>
+</div></dd>
+</dl>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="about_e">* Примечание:</div>
+</div>
+
+<script>
+var quqa = document.cookie.split("=");
+if (quqa[1]=="true") {gebi('realer').checked=true; real=true; turn(real);} else {gebi('realer').checked=false; real=false;}
+
+function turn(da)
+{
+var dis='';
+if (da) {dis='none'; pus='block';} else {dis='block'; pus='none';}
+var el=document.getElementsByTagName("input");
+for (var i=0, len=el.length; i<len; i++) {
+	if ((el[i].type=="submit")&&(el[i].value=="Перевести")) el[i].style.display=dis;
+}
+
+var el=document.getElementsByTagName("div");
+for (var i=0, len=el.length; i<len; i++) {
+	if (el[i].id=="pusto") el[i].style.display=pus;
+}
+}
+</script></center></form>
+
+</body>
+</html>
