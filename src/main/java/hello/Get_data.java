@@ -44,7 +44,7 @@ public class Get_data{
 	}
 
 	public void setSecond_value(service service) {
-		var x = service.getDifference(this.first_class,this.second_class);
+		String x = service.getDifference(this.first_class,this.second_class);
 		if(x.charAt(0)=='*')
 			second_value=first_value*Integer.parseInt(x.substring(1));
 		else if(x.charAt(0)=='/')

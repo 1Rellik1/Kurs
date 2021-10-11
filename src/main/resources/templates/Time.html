@@ -123,7 +123,7 @@
     <div class="kfv">
         <dl class="tabs">
     <dt class="selected" style="margin-right:387px;">Время</dt><dd class="selected"><div class="tab-content"><h2>Время</h2>
-        <form action="#"  th:object="${get_data}" method="post"><tbody><tr><td>
+        <form action="/sumbit"  th:object="${get_data}" method="post"><tbody><tr><td>
             <select id="value1" th:field="*{first_class}">
                 <option th:value="'sec'">секунды (с)</option>
                 <option th:value="'min'" selected="">минуты (мин)</option>
@@ -151,5 +151,9 @@
         <p>В релятивистской физике время — часть единого пространства-времени, и, значит, может меняться при&nbsp;его преобразованиях.</p>
     </dd>
             <a href="http://localhost:8081/weight"> <dt class="" style="margin-right:387px;">Вес, масса</dt></a>
+            <a href="http://localhost:8081/consumption"> <dt class=""style="margin-right:387px;">Расход топлива</dt></a>
+            <form action="/addcomment"  method="post">
+                <input type="submit" value="Добавить комментарий">
+            </form>
 </body>
 </html>

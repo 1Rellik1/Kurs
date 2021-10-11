@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html xmlns:th="https://www.thymeleaf.org">
-<head> 
+<head>
     <title>Getting Started: Handling Form Submission</title>
     <link rel="stylesheet" href="Style.css">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -117,43 +117,51 @@
         text-decoration: none;
         color: black;
     }
-
 </style>
-	<h1>Конвертер</h1>
-    <div class="kfv">
-        <dl class="tabs">
-    <dt class="selected" style="margin-right:387px;">Время</dt><dd class="selected"><div class="tab-content"><h2>Время</h2>
+<h1>Конвертер</h1>
+<div class="kfv">
+    <dl class="tabs">
+        <a href="http://localhost:8081/time"> <dt class="" style="margin-right:387px;">Время</dt></a><dd class="">
+        <a href="http://localhost:8081/weight"> <dt class="" style="margin-right:387px;">Вес, масса</dt></a>
+        <dt class="selected">Расход топлива</dt><dd class=""><div class="tab-content"><h2>Расход топлива</h2>
         <form action="#"  th:object="${get_data}" method="post"><tbody><tr><td>
-            <select id="value1" th:field="*{first_class}">
-                <option th:value="'sec'">секунды (с)</option>
-                <option th:value="'min'" selected="">минуты (мин)</option>
-                <option th:value="'hour'">часы (ч)</option>
-                <option th:value="'day'">сутки</option>
-                <option th:value="'week'">недели</option>
-                <option th:value="'year'">года</option>
-                <option th:value="'cent'">века</option>
+            <select  id="value1" th:field="*{first_class}">
+                <option th:value="ng">нанограмм (нг)</option>
+                <option th:value="mg">миллиграмм (мг)</option>
+                <option th:value="g" selected="">грамм (г)</option>
+                <option th:value="kg">килограмм (кг)</option>
+                <option th:value="c">центнер (ц)</option>
+                <option th:value="t">тонна (т)</option>
+                <option th:value="kt">килотонна (кт)</option>
+                <option th:value="n">ньютон</option>
+                <option th:value="kn">килоньютон</option>
+                <option th:value="emu">ед. атомн. массы</option>
+                <option th:value="car">карат</option>
+                <option th:value="unc.">унция</option>
+                <option th:value="lb">англ. фунт</option>
+                <option th:value="rf">рус. фунт</option>
+                <option th:value="p">пуд</option>
             </select></td><td>в</td><td>
-            <select id="vremya2e" th:field="*{second_class}">
-                <option th:value="'sec'">секунды (с)</option>
-                <option th:value="'min'" selected="">минуты (мин)</option>
-                <option th:value="'hour'">часы (ч)</option>
-                <option th:value="'day'">сутки</option>
-                <option th:value="'week'">недели</option>
-                <option th:value="'year'">года</option>
-                <option th:value="'cent'">века</option>
-            </select></td></tr><tr>
-            <input type="text" id="vremya1" th:field="*{first_value}">&nbsp;<b id="vremya1eb" th:text="${get_data.first_class}"></b></td><td>=</td><td nowrap="">
-            <input type="text" id="vremya2"  th:value=" ${get_data.second_value}">&nbsp;<b id="vremya2eb">с</b></td></tr></tbody></table>
+            <select id="rashod1e">
+                <option th:value="l/100km">литры на 100 км</option>
+                <option th:value="км/л" selected="">км на литр</option>
+                <option th:value="g/100m">галлон/100 миль</option>
+                <option th:value="mpg">мили/галлон US</option>
+            </select></td><td>в</td><td>
+            <select id="rashod2e">
+                <option th:value="l/100km" selected="">литры на 100 км</option>
+                <option th:value="км/л">км на литр</option>
+                <option th:value="g/100m">галлон/100 миль</option>
+                <option th:value="mpg">мили/галлон US</option>
+            </select></td></tr><tr><td nowrap="">
+            <input type="text" id="ves1" th:field="*{first_value}" >&nbsp;<b id="ves1eb">г</b>
+        </td><td>=</td><td nowrap="">
+            <input type="text" id="ves2" th:value=" ${get_data.second_value}">&nbsp;<b id="ves2eb">кг</b>
+        </td></tr></tbody></table>
             <div id="pusto">&nbsp;</div><input type="submit" value="Перевести">
         </form>
-        </div>
-        <p><b>Время</b> в классической физике — непрерывная величина, априорная характеристика мира. В&nbsp;качестве основы измерения берётся некая последовательность периодичных событий (то есть происходящих через равные промежутки времени).</p>
-        <p>В релятивистской физике время — часть единого пространства-времени, и, значит, может меняться при&nbsp;его преобразованиях.</p>
-    </dd>
-            <a href="http://localhost:8081/weight"> <dt class="" style="margin-right:387px;">Вес, масса</dt></a>
-            <a href="http://localhost:8081/consumption"> <dt class=""style="margin-right:387px;">Расход топлива</dt></a>
-            <form action="/addcomment"  method="post">
-                <input type="submit" value="Добавить комментарий">
-            </form>
+        <p><b>Расход топлива</b> — расход единицы топлива на&nbsp;единицу расстояния или в&nbsp;единицу времени.</p>
+        <p>Является одной из важных характеристик двигателя.</p>
+    </div></dd>
 </body>
 </html>
