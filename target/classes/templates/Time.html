@@ -6,6 +6,35 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+<script>
+    // эта функция сработает при нажатии на кнопку
+    function sendJSON() {
+        // с помощью jQuery обращаемся к элементам на странице по их именам
+        let name = document.querySelector('#nameinput');
+        let lastname = document.querySelector('#commentinput');
+
+        // создаём новый экземпляр запроса XHR
+        let xhr = new XMLHttpRequest();
+        // адрес, куда мы отправим нашу JSON-строку
+        let url = "http://localhost:8081/comment";
+        // открываем соединение
+        xhr.open("Post", url, true);
+        // устанавливаем заголовок — выбираем тип контента, который отправится на сервер, в нашем случае мы явно пишем, что это JSON
+        xhr.setRequestHeader("Content-Type", "application/json");
+        // когда придёт ответ на наше обращение к серверу, мы его обработаем здесь
+        xhr.onreadystatechange = function () {
+            // если запрос принят и сервер ответил, что всё в порядке
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // выводим то, что ответил нам сервер — так мы убедимся, что данные он получил правильно
+                alert(this.responseText);
+            }
+        };
+        // преобразуем наши данные JSON в строку
+        var data = JSON.stringify({ "name": name.value, "comment": lastname.value });
+        // когда всё готово, отправляем JSON на сервер
+        xhr.send(data);
+    }
+</script>
 <style>
     .kfv {
         display:block;
@@ -123,7 +152,7 @@
     <div class="kfv">
         <dl class="tabs">
     <dt class="selected" style="margin-right:387px;">Время</dt><dd class="selected"><div class="tab-content"><h2>Время</h2>
-        <form action="#"  th:object="${get_data}" method="post"><tbody><tr><td>
+        <form action=""  th:object="${get_data}" method="post"><tbody><tr><td>
             <select id="value1" th:field="*{first_class}">
                 <option th:value="'sec'">секунды (с)</option>
                 <option th:value="'min'" selected="">минуты (мин)</option>
@@ -145,15 +174,21 @@
             <input type="text" id="vremya1" th:field="*{first_value}">&nbsp;<b id="vremya1eb" th:text="${get_data.first_class}"></b></td><td>=</td><td nowrap="">
             <input type="text" id="vremya2"  th:value=" ${get_data.second_value}">&nbsp;<b id="vremya2eb">с</b></td></tr></tbody></table>
             <div id="pusto">&nbsp;</div><input type="submit" value="Перевести">
+
         </form>
+            <p><b>Время</b> в классической физике — непрерывная величина, априорная характеристика мира. В&nbsp;качестве основы измерения берётся некая последовательность периодичных событий (то есть происходящих через равные промежутки времени).</p>
+            <p>В релятивистской физике время — часть единого пространства-времени, и, значит, может меняться при&nbsp;его преобразованиях.</p>
+            <br><br>
+                <b id="name"></b>
+                <b id="comment"></b>
+                <br>
+                <input type="text" id="nameinput">
+                <input type="text" id="commentinput">
+                <button onclick="sendJSON()" value="Добавить комментарий">
         </div>
-        <p><b>Время</b> в классической физике — непрерывная величина, априорная характеристика мира. В&nbsp;качестве основы измерения берётся некая последовательность периодичных событий (то есть происходящих через равные промежутки времени).</p>
-        <p>В релятивистской физике время — часть единого пространства-времени, и, значит, может меняться при&nbsp;его преобразованиях.</p>
     </dd>
             <a href="http://localhost:8081/weight"> <dt class="" style="margin-right:387px;">Вес, масса</dt></a>
-            <a href="http://localhost:8081/consumption"> <dt class=""style="margin-right:387px;">Расход топлива</dt></a>
-            <form action="/addcomment"  method="post">
-                <input type="submit" value="Добавить комментарий">
-            </form>
+            <a href="http://localhost:8081/length"> <dt class="" style="margin-right:387px;">Длина</dt></a>
+
 </body>
 </html>

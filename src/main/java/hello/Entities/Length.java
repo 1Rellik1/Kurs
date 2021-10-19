@@ -1,5 +1,6 @@
 package hello.Entities;
 
+
 import com.sun.istack.NotNull;
 
 import javax.persistence.Column;
@@ -7,9 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 @Entity
-@Table(name = "consumption")
-public class Consumption {
+@Table(name = "length")
+public class Length {
+
     @Column(name = "first_value")
     @NotNull
     private String first_value;

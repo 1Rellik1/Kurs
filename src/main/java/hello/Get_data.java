@@ -49,7 +49,6 @@ public class Get_data{
 			second_value=first_value*Integer.parseInt(x.substring(1));
 		else if(x.charAt(0)=='/')
 			second_value=first_value/Integer.parseInt(x.substring(1));
-	}
-
+		}
 
 }
